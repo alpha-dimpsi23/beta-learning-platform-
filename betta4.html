@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beta - Making Learning Easier</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        header {
+            height: 70px;
+            background: #111111;
+            border-bottom: 1px solid #222222;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 38px;
+            color: #007aff;
+            font-weight: 300;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            padding: 9px 18px;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #333333;
+        }
+
+        .login-btn:hover {
+            background: #1a1a1a;
+        }
+
+        .signup-btn {
+            background: #007aff;
+            color: white;
+            border: 1px solid #007aff;
+        }
+
+        .signup-btn:hover {
+            background: #0062cc;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            min-height: 520px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero-logo {
+            font-size: 90px;
+            color: #007aff;
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #007aff;
+        }
+
+        .hero-slogan {
+            color: #888888;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-description {
+            color: #aaaaaa;
+            font-size: 15px;
+            line-height: 1.7;
+
+            max-width: 620px;
+            margin: auto auto 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .hero-btn {
+            padding: 13px 25px;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #007aff;
+            color: #ffffff;
+            border: 1px solid #007aff;
+        }
+
+        .primary:hover {
+            background: #0062cc;
+        }
+
+        .secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #333333;
+        }
+
+        .secondary:hover {
+            background: #181818;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features-section {
+            padding: 50px 7% 80px;
+            border-top: 1px solid #171717;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #777777;
+            font-size: 13px;
+        }
+
+        .features {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature-card {
+            background: #111111;
+            border: 1px solid #222222;
+
+            border-radius: 10px;
+
+            padding: 28px 22px;
+
+            text-align: center;
+
+            transition: 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: #007aff;
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+
+            margin: 0 auto 16px;
+
+            border-radius: 10px;
+
+            background: #142d47;
+            color: #007aff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #777777;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           PREVIEW
+        ========================= */
+
+        .preview-section {
+            padding: 70px 20px;
+            background: #080808;
+
+            text-align: center;
+        }
+
+        .preview-section h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .preview-section > p {
+            color: #777777;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        .preview {
+            max-width: 900px;
+            margin: auto;
+
+            background: #111111;
+            border: 1px solid #222222;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            text-align: left;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .preview-header h3 {
+            font-size: 17px;
+        }
+
+        .demo-badge {
+            color: #007aff;
+            background: #142d47;
+
+            padding: 5px 9px;
+
+            border-radius: 5px;
+
+            font-size: 10px;
+        }
+
+        .preview-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .preview-card {
+            background: #181818;
+            border: 1px solid #292929;
+
+            padding: 18px;
+            border-radius: 8px;
+        }
+
+        .preview-card .number {
+            font-size: 25px;
+            font-weight: 700;
+            color: #007aff;
+
+            margin-bottom: 5px;
+        }
+
+        .preview-card .label {
+            font-size: 11px;
+            color: #777777;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 25px 20px;
+
+            text-align: center;
+
+            color: #555555;
+            font-size: 11px;
+
+            border-top: 1px solid #1c1c1c;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-logo {
+                font-size: 70px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+            .preview-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .brand-name {
+                font-size: 20px;
+            }
+
+            .logo {
+                font-size: 30px;
+            }
+
+            .nav-btn {
+                padding: 8px 11px;
+                font-size: 11px;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero-slogan {
+                font-size: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <div class="brand">
+            <div class="logo">&beta;</div>
+            <div class="brand-name">beta</div>
+        </div>
+
+        <div class="nav-buttons">
+
+            <button
+                class="nav-btn login-btn"
+                onclick="goToLogin()">
+                Sign In
+            </button>
+
+            <button
+                class="nav-btn signup-btn"
+                onclick="goToSignup()">
+                Create Account
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-logo">&beta;</div>
+
+            <h1>
+                Making <span>Learning</span> Easier
+            </h1>
+
+            <p class="hero-slogan">
+                A simpler way to learn, organize and succeed.
+            </p>
+
+            <p class="hero-description">
+                Beta helps students keep their learning organized
+                in one place. Access your courses, assignments,
+                grades, schedule and learning resources from a
+                simple student dashboard.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="hero-btn primary"
+                    onclick="goToSignup()">
+                    Get Started
+                </button>
+
+                <button
+                    class="hero-btn secondary"
+                    onclick="goToLogin()">
+                    Sign In
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section class="features-section">
+
+        <div class="section-title">
+
+            <h2>Everything You Need to Learn</h2>
+
+            <p>
+                Beta brings your schoolwork together.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>Courses</h3>
+
+                <p>
+                    Keep all your subjects and learning
+                    materials organized in one place.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <h3>Assignments</h3>
+
+                <p>
+                    Track upcoming assignments and never
+                    lose sight of an important deadline.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>Progress</h3>
+
+                <p>
+                    Monitor your academic progress and
+                    understand where you can improve.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📅
+                </div>
+
+                <h3>Schedule</h3>
+
+                <p>
+                    Organize classes, tests and other
+                    important academic events.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📝
+                </div>
+
+                <h3>Study Resources</h3>
+
+                <p>
+                    Find useful revision materials and
+                    resources for your subjects.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔔
+                </div>
+
+                <h3>Notifications</h3>
+
+                <p>
+                    Stay informed about assignments,
+                    announcements and upcoming events.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DASHBOARD PREVIEW
+    ========================== -->
+
+    <section class="preview-section">
+
+        <h2>Your Learning, Organized</h2>
+
+        <p>
+            Sign in to access your personal student dashboard.
+        </p>
+
+        <div class="preview">
+
+            <div class="preview-header">
+
+                <h3>Student Dashboard</h3>
+
+                <span class="demo-badge">
+                    PREVIEW
+                </span>
+
+            </div>
+
+            <div class="preview-cards">
+
+                <div class="preview-card">
+
+                    <div class="number">
+                        —
+                    </div>
+
+                    <div class="label">
+                        Your Courses
+                    </div>
+
+                </div>
+
+
+                <div class="preview-card">
+
+                    <div class="number">
+                        —
+                    </div>
+
+                    <div class="label">
+                        Assignments
+                    </div>
+
+                </div>
+
+
+                <div class="preview-card">
+
+                    <div class="number">
+                        —
+                    </div>
+
+                    <div class="label">
+                        Your Progress
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        &copy; 2026 Beta — Making Learning Easier
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+         * These functions connect this public
+         * dashboard to the login page you created.
+         *
+         * Change "betta.html" if your login file
+         * has a different filename.
+         */
+
+        function goToLogin() {
+            window.location.href = "betta.html#login";
+        }
+
+
+        function goToSignup() {
+            window.location.href = "betta.html#signup";
+        }
+
+        if (window.location.hash === "#welcome") {
+            setTimeout(() => {
+                alert("Welcome to Beta — Making Learning Easier!");
+                history.replaceState(null, "", "betta4.html");
+            }, 250);
+        }
+
+    </script>
+
+</body>
+</html>
